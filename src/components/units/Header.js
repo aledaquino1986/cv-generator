@@ -20,56 +20,64 @@ class Header extends Component {
         isTextInput: false
       }
     };
-
-    this.handleNameChangeToInput = this.handleNameChangeToInput.bind(this);
-    this.onNameChangeHandler = this.onNameChangeHandler.bind(this);
   }
 
-  handleNameChangeToInput(e) {
-    e.preventDefault();
-    console.log("ola bb");
-
-    this.setState({
-      name: {
-        username: this.state.name.username,
-        isTextInput: !this.state.name.isTextInput
-      }
-    });
-  }
-
-  handleJobTitleChangeToInput = e => {
+  changeTextToInput = (e, state) => {
     e.preventDefault();
 
-    this.setState({
-      title: {
-        jobTitle: this.state.title.jobTitle,
-        isJobTitleInput: !this.state.title.isJobTitleInput
-      }
-    });
+    if (state === this.state.title) {
+      this.setState({
+        title: {
+          jobTitle: this.state.title.jobTitle,
+          isJobTitleInput: !this.state.title.isJobTitleInput
+        }
+      });
+    } else if (state === this.state.name) {
+      this.setState({
+        name: {
+          username: this.state.name.username,
+          isTextInput: !this.state.name.isTextInput
+        }
+      });
+    }
   };
 
-  onNameChangeHandler(e) {
+  // onStateChangeHandler = (e, state) => {
+  //   const { value } = e.target;
+  //   if (state === this.state.title) {
+  //     this.setState({
+  //       title: {
+  //         jobTitle: value,
+  //         isJobTitleInput: true
+  //       }
+  //     });
+  //   } else if (state === this.state.name) {
+  //     this.setState({
+  //       name: {
+  //         username: e.target.value,
+  //         isTextInput: true
+  //       }
+  //     });
+  //   }
+  // };
+
+  createNameAndJobTitle = (e, state) => {
     const { value } = e.target;
-    console.log(this.state.name.username);
-
-    this.setState({
-      name: {
-        username: e.target.value,
-        isTextInput: true
-      }
-    });
-  }
-
-  onJobTitleChangeHandler = e => {
-    const { value } = e.target;
-    console.log(this.state.title.jobTitle);
-
-    this.setState({
-      title: {
-        jobTitle: value,
-        isJobTitleInput: true
-      }
-    });
+    if (state === this.state.title) {
+      this.setState({
+        title: {
+          jobTitle: value,
+          isJobTitleInput: true
+        }
+      });
+    } else if (state === this.state.name) {
+      this.setState({
+        name: {
+          username: value,
+          isTextInput: true
+        }
+      });
+    }
   };
 
   render() {
@@ -82,7 +90,7 @@ class Header extends Component {
                 <Input
                   type="text"
                   placeholder="Add yourname"
-                  onChange={this.onNameChangeHandler}
+                  onChange={e => this.createNameAndJobTitle(e, this.state.name)}
                   value={this.state.name.username}
                   className="mountedStyle"
                 />
@@ -92,7 +100,7 @@ class Header extends Component {
                       ? "hidden unmountedStyle "
                       : "mountedStyle"
                   }
-                  onClick={this.handleNameChangeToInput}
+                  onClick={e => this.changeTextToInput(e, this.state.name)}
                   text="Confirm Your Name"
                 />
               </>
@@ -111,7 +119,7 @@ class Header extends Component {
                       ? "hidden unmountedStyle "
                       : "mountedStyle"
                   }
-                  onClick={this.handleNameChangeToInput}
+                  onClick={e => this.changeTextToInput(e, this.state.name)}
                   text="Add your name"
                 />
               </>
@@ -126,7 +134,9 @@ class Header extends Component {
                 <Input
                   type="text"
                   placeholder="Add your job title"
-                  onChange={this.onJobTitleChangeHandler}
+                  onChange={e =>
+                    this.createNameAndJobTitle(e, this.state.title)
+                  }
                   value={this.state.title.jobTitle}
                   className="mountedStyle"
                 />
@@ -137,7 +147,7 @@ class Header extends Component {
                       ? "hidden unmountedstyle"
                       : "mountedStyle"
                   }
-                  onClick={this.handleJobTitleChangeToInput}
+                  onClick={e => this.changeTextToInput(e, this.state.title)}
                   text="Confirm your job title"
                 />
               </>
@@ -155,7 +165,7 @@ class Header extends Component {
                       ? "hidden unmountedstyle"
                       : "mountedStyle"
                   }
-                  onClick={this.handleJobTitleChangeToInput}
+                  onClick={e => this.changeTextToInput(e, this.state.title)}
                   text="Add your job title"
                 />
               </>
