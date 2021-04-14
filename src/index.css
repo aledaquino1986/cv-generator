@@ -18,10 +18,18 @@ body {
   margin: 1rem 0;
 }
 
+main {
+  width: 70%;
+}
+
 h3 {
-  font-size: 3rem;
+  font-size: 2rem;
+  border-bottom: 2px solid black;
+  display: block;
+  text-align: left;
+  padding-left: 1rem;
 }
 
 section {
-  margin-top: 2rem;
+  margin-top: 0.5rem;
 }

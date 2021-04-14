@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Button from "../../elements/button/Button";
 import EducationForm from "./EducationForm";
+import Card from "../../elements/card/Card";
 
 import "./education.css";
 class Education extends Component {
@@ -113,12 +114,15 @@ class Education extends Component {
         <h3 className="section-heading__education">Education</h3>
 
         {this.state.educationList.map(education => {
+          const { nameOfInstitution, degree, startDate, endDate } = education;
           return (
             <>
-              <p>{education.nameOfInstitution}</p>
-              <p>{education.degree}</p>
-              <p>{education.startDate}</p>
-              <p>{education.endDate}</p>
+              <Card
+                nameOfInstitution={nameOfInstitution}
+                degree={degree}
+                startDate={startDate}
+                endDate={endDate}
+              />
             </>
           );
         })}

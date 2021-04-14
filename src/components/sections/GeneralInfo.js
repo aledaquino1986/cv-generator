@@ -4,7 +4,7 @@ export default class GeneralInfo extends Component {
   render() {
     return (
       <div>
-        <h1>General Info</h1>
+        <h3>General Info</h3>
       </div>
     );
   }
