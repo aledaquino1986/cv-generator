@@ -2,7 +2,7 @@ button {
   display: inline-block;
   padding: 0.6rem 1.5rem;
   display: inline-block;
-  margin: 1rem 0;
+  margin: 1rem 1rem;
   font-size: 1.7rem;
   outline: none;
   cursor: pointer;
@@ -22,4 +22,13 @@ button:hover {
 button:active {
   transform: translateY(3px);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.disabled,
+.disabled:hover {
+  background-color: grey;
+}
+
+.disabled:hover {
+  color: white;
 }

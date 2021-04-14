@@ -1,7 +1,14 @@
 import React from "react";
 import "./input.css";
 
-const Input = ({ type, placeholder, onChange, value, className }) => {
+const Input = ({
+  type,
+  placeholder = "",
+  onChange,
+  value,
+  className = "mountedStyle",
+  id = ""
+}) => {
   return (
     <input
       type={type}
@@ -9,6 +16,7 @@ const Input = ({ type, placeholder, onChange, value, className }) => {
       onChange={onChange}
       value={value}
       className={className}
+      id={id}
     />
   );
 };
