@@ -29,3 +29,8 @@ h3 {
 section {
   margin-top: 0.5rem;
 }
+
+label {
+  text-decoration: underline;
+  font-weight: bold;
+}

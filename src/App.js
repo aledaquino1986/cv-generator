@@ -1,7 +1,7 @@
 import "./App.css";
 import Education from "./components/sections/education/Education";
-import GeneralInfo from "./components/sections/GeneralInfo";
-import WorkExperience from "./components/sections/WorkExperience";
+
+import WorkExperience from "./components/sections/workexperience/WorkExperience";
 import Header from "./components/units/Header";
 import Sidebar from "./components/sections/sidebar/Sidebar";
 import MainContainer from "./components/layout/MainContainer";

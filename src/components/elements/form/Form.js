@@ -1,8 +1,9 @@
 import React from "react";
 import Input from "../../elements/input/Input";
-import "./education.css";
+import "./form.css";
+import "../button/Button";
 
-const EducationForm = ({ notFinished, onChangeEducationHandler }) => {
+const Form = ({ notFinished, onChangeEducationHandler, component }) => {
   return (
     <div className="form-container">
       <label htmlFor="Institution">Name of Institution</label>
@@ -10,20 +11,22 @@ const EducationForm = ({ notFinished, onChangeEducationHandler }) => {
         type="text"
         id="Institution"
         placeholder="National University of La Plata"
-        onChange={e => onChangeEducationHandler(e, "nameOfInstitution")}
+        onChange={e =>
+          onChangeEducationHandler(e, "nameOfInstitution", component)
+        }
       />
       <label htmlFor="degree">Degree</label>
       <Input
         type="text"
         id="degree"
         placeholder="Software Engineer"
-        onChange={e => onChangeEducationHandler(e, "degree")}
+        onChange={e => onChangeEducationHandler(e, "degree", component)}
       />
       <label htmlFor="start-date">Start Date</label>
       <Input
         type="date"
         id="start-date"
-        onChange={e => onChangeEducationHandler(e, "startDate")}
+        onChange={e => onChangeEducationHandler(e, "startDate", component)}
       />
       <label htmlFor="end-date">End Date</label>
 
@@ -32,7 +35,7 @@ const EducationForm = ({ notFinished, onChangeEducationHandler }) => {
           <Input
             type="date"
             id="end-date"
-            onChange={e => onChangeEducationHandler(e, "endDate")}
+            onChange={e => onChangeEducationHandler(e, "endDate", component)}
           />
         ) : null}
 
@@ -40,11 +43,11 @@ const EducationForm = ({ notFinished, onChangeEducationHandler }) => {
         <Input
           type="checkbox"
           id="currentWorkplace"
-          onChange={e => onChangeEducationHandler(e, "finished")}
+          onChange={e => onChangeEducationHandler(e, "finished", component)}
         />
       </div>
     </div>
   );
 };
 
-export default EducationForm;
+export default Form;

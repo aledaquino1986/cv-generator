@@ -2,15 +2,14 @@ import React, { Component } from "react";
 import Button from "../../elements/button/Button";
 import Form from "../../elements/form/Form";
 import Card from "../../elements/card/Card";
-
+import "../education/education.css";
 import {
   disableButton,
   onChangeEducationHandler,
   onFormSubmission
 } from "../../../utils/stateUtils";
 
-import "./education.css";
-class Education extends Component {
+class Workexperience extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -82,4 +81,4 @@ class Education extends Component {
   }
 }
 
-export default Education;
+export default Workexperience;

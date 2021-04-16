@@ -6,19 +6,15 @@ const Card = ({ nameOfInstitution, degree, startDate, endDate }) => {
   return (
     <div className="card-container">
       <div className="card-heading">
-        <ul>
-          <li>
-            {" "}
-            <h5 className="profession-education">
-              {" "}
-              {degree} <span>({nameOfInstitution})</span>
-            </h5>{" "}
-            <p className="date">
-              {" "}
-              {formatFunction(startDate)} | {formatFunction(endDate)}
-            </p>
-          </li>
-        </ul>
+        <>
+          <h5 className="profession-education">
+            {degree} <span>({nameOfInstitution})</span>
+          </h5>
+          <p className="date">
+            {formatFunction(startDate)} |{" "}
+            {endDate === "present" ? "present" : formatFunction(endDate)}
+          </p>
+        </>
       </div>
     </div>
   );
