@@ -1,8 +1,37 @@
 .card-container {
   background-color: white;
 
-  width: 75%;
   margin: 0 auto;
-
   margin-bottom: 1rem;
+  text-align: left;
 }
+
+.card-heading {
+  margin-top: 1rem;
+  padding-left: 1rem;
+  /* display: flex; */
+  /* flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+   */
+}
+
+.profession-education {
+  color: #2251b2;
+  font-size: 1.7rem;
+}
+
+.profession-education span {
+  color: black;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.date {
+  font-size: 1.3rem;
+  font-style: italic;
+}
+
+/* .card-heading p:not(:last-child) {
+  flex-basis: 200px;
+} */

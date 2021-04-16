@@ -4,23 +4,21 @@ import GeneralInfo from "./components/sections/GeneralInfo";
 import WorkExperience from "./components/sections/WorkExperience";
 import Header from "./components/units/Header";
 import Sidebar from "./components/sections/sidebar/Sidebar";
+import MainContainer from "./components/layout/MainContainer";
+
+import WholePageContainer from "./components/layout/WholePageContainer";
 function App() {
   return (
     <div className="App">
       <Header />
-
-      <div className="whole-page-container">
+      <WholePageContainer>
         <Sidebar />
-
-        <main
-          className="main-section
-        "
-        >
+        <MainContainer>
           <Education />
-          <GeneralInfo />
+          {/* <GeneralInfo /> */}
           <WorkExperience />
-        </main>
-      </div>
+        </MainContainer>
+      </WholePageContainer>
     </div>
   );
 }

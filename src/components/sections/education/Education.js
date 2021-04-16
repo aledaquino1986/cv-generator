@@ -90,8 +90,6 @@ class Education extends Component {
 
     copyOfEducationList.push(this.state.education);
 
-    console.log(this.state.education);
-
     if (!nameOfInstitution || !degree || !startDate || !endDate) {
       return alert("Los campos estan vacios");
     }
