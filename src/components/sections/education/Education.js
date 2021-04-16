@@ -5,7 +5,7 @@ import Card from "../../elements/card/Card";
 
 import {
   disableButton,
-  onChangeEducationHandler,
+  onChangeWorkEducationHandler,
   onFormSubmission
 } from "../../../utils/stateUtils";
 
@@ -55,8 +55,12 @@ class Education extends Component {
               startDate={this.state.education.startDate}
               endDate={this.state.education.endDate}
               notFinished={this.state.education.notFinished}
-              onChangeEducationHandler={onChangeEducationHandler}
+              onChangeWorkEducationHandler={onChangeWorkEducationHandler}
               component={this}
+              placeOfWorkStudy="Institution Name"
+              workEducationPlaceholder="University of Illinois"
+              jobDegreeTitle="Software developer"
+              titleOrDegree="Degree"
             />
           </>
         )}

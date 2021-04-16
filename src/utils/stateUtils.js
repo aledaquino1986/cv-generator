@@ -4,99 +4,190 @@ const disableButton = component => {
   });
 };
 
-const onChangeEducationHandler = (e, stateKey, component) => {
+const onChangeWorkEducationHandler = (e, stateKey, component) => {
   const { value } = e.target;
 
-  const {
-    nameOfInstitution,
-    degree,
-    startDate,
-    endDate,
-    notFinished
-  } = component.state.education;
+  if (component.state.education) {
+    const {
+      nameOfInstitution,
+      degree,
+      startDate,
+      endDate,
+      notFinished
+    } = component.state.education;
 
-  if (stateKey === "nameOfInstitution") {
-    component.setState({
-      education: {
-        nameOfInstitution: value,
-        degree,
-        startDate,
-        endDate,
-        notFinished
-      }
-    });
-  } else if (stateKey === "degree") {
-    component.setState({
-      education: {
-        nameOfInstitution,
-        degree: value,
-        startDate,
-        endDate,
-        notFinished
-      }
-    });
-  } else if (stateKey === "startDate") {
-    component.setState({
-      education: {
-        nameOfInstitution,
-        degree,
-        startDate: value,
-        endDate,
-        notFinished
-      }
-    });
-  } else if (stateKey === "endDate") {
-    component.setState({
-      education: {
-        nameOfInstitution,
-        degree,
-        startDate,
-        endDate: value,
-        notFinished
-      }
-    });
-  } else if (stateKey === "finished") {
-    component.setState({
-      education: {
-        nameOfInstitution,
-        degree,
-        startDate,
-        endDate: !component.state.education.notFinished ? "present" : "",
-        notFinished: !component.state.education.notFinished
-      }
-    });
+    if (stateKey === "nameOfInstitution") {
+      component.setState({
+        education: {
+          nameOfInstitution: value,
+          degree,
+          startDate,
+          endDate,
+          notFinished
+        }
+      });
+    } else if (stateKey === "degree") {
+      component.setState({
+        education: {
+          nameOfInstitution,
+          degree: value,
+          startDate,
+          endDate,
+          notFinished
+        }
+      });
+    } else if (stateKey === "startDate") {
+      component.setState({
+        education: {
+          nameOfInstitution,
+          degree,
+          startDate: value,
+          endDate,
+          notFinished
+        }
+      });
+    } else if (stateKey === "endDate") {
+      component.setState({
+        education: {
+          nameOfInstitution,
+          degree,
+          startDate,
+          endDate: value,
+          notFinished
+        }
+      });
+    } else if (stateKey === "finished") {
+      component.setState({
+        education: {
+          nameOfInstitution,
+          degree,
+          startDate,
+          endDate: !component.state.education.notFinished ? "present" : "",
+          notFinished: !component.state.education.notFinished
+        }
+      });
+    }
+  } else if (component.state.work) {
+    const {
+      nameOfInstitution,
+      degree,
+      startDate,
+      endDate,
+      notFinished
+    } = component.state.work;
+
+    if (stateKey === "nameOfInstitution") {
+      component.setState({
+        work: {
+          nameOfInstitution: value,
+          degree,
+          startDate,
+          endDate,
+          notFinished
+        }
+      });
+    } else if (stateKey === "degree") {
+      component.setState({
+        work: {
+          nameOfInstitution,
+          degree: value,
+          startDate,
+          endDate,
+          notFinished
+        }
+      });
+    } else if (stateKey === "startDate") {
+      component.setState({
+        work: {
+          nameOfInstitution,
+          degree,
+          startDate: value,
+          endDate,
+          notFinished
+        }
+      });
+    } else if (stateKey === "endDate") {
+      component.setState({
+        work: {
+          nameOfInstitution,
+          degree,
+          startDate,
+          endDate: value,
+          notFinished
+        }
+      });
+    } else if (stateKey === "finished") {
+      component.setState({
+        work: {
+          nameOfInstitution,
+          degree,
+          startDate,
+          endDate: !component.state.work.notFinished ? "present" : "",
+          notFinished: !component.state.work.notFinished
+        }
+      });
+    }
   }
 };
 
 const onFormSubmission = (e, component) => {
   e.preventDefault();
 
-  const {
-    nameOfInstitution,
-    degree,
-    startDate,
-    endDate
-  } = component.state.education;
+  if (component.state.education) {
+    const {
+      nameOfInstitution,
+      degree,
+      startDate,
+      endDate
+    } = component.state.education;
 
-  const copyOfEducationList = [...component.state.educationList];
+    const copyOfEducationList = [...component.state.educationList];
 
-  copyOfEducationList.push(component.state.education);
+    copyOfEducationList.push(component.state.education);
 
-  if (!nameOfInstitution || !degree || !startDate || !endDate) {
-    return alert("Los campos estan vacios");
+    if (!nameOfInstitution || !degree || !startDate || !endDate) {
+      return alert("Los campos estan vacios");
+    }
+    console.log("finished submitting");
+
+    component.setState({
+      isDisabled: !component.state.isDisabled,
+      education: {
+        nameOfInstitution: "",
+        degree: "",
+        startDate: "",
+        endDate: ""
+      },
+      educationList: copyOfEducationList
+    });
+  } else if (component.state.work) {
+    const {
+      nameOfInstitution,
+      degree,
+      startDate,
+      endDate
+    } = component.state.work;
+
+    const copyOfWorkList = [...component.state.workList];
+
+    copyOfWorkList.push(component.state.work);
+
+    if (!nameOfInstitution || !degree || !startDate || !endDate) {
+      return alert("Los campos estan vacios");
+    }
+    console.log("finished submitting");
+
+    component.setState({
+      isDisabled: !component.state.isDisabled,
+      work: {
+        nameOfInstitution: "",
+        degree: "",
+        startDate: "",
+        endDate: ""
+      },
+      workList: copyOfWorkList
+    });
   }
-  console.log("finished submitting");
-
-  component.setState({
-    isDisabled: !component.state.isDisabled,
-    education: {
-      nameOfInstitution: "",
-      degree: "",
-      startDate: "",
-      endDate: ""
-    },
-    educationList: copyOfEducationList
-  });
 };
 
-export { disableButton, onChangeEducationHandler, onFormSubmission };
+export { disableButton, onChangeWorkEducationHandler, onFormSubmission };

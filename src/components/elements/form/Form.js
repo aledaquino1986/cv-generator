@@ -3,30 +3,38 @@ import Input from "../../elements/input/Input";
 import "./form.css";
 import "../button/Button";
 
-const Form = ({ notFinished, onChangeEducationHandler, component }) => {
+const Form = ({
+  notFinished,
+  onChangeWorkEducationHandler,
+  component,
+  placeOfWorkStudy,
+  workEducationPlaceholder,
+  jobDegreeTitle,
+  titleOrDegree
+}) => {
   return (
     <div className="form-container">
-      <label htmlFor="Institution">Name of Institution</label>
+      <label htmlFor="Institution">{placeOfWorkStudy}</label>
       <Input
         type="text"
         id="Institution"
-        placeholder="National University of La Plata"
+        placeholder={workEducationPlaceholder}
         onChange={e =>
-          onChangeEducationHandler(e, "nameOfInstitution", component)
+          onChangeWorkEducationHandler(e, "nameOfInstitution", component)
         }
       />
-      <label htmlFor="degree">Degree</label>
+      <label htmlFor="degree">{titleOrDegree}</label>
       <Input
         type="text"
         id="degree"
-        placeholder="Software Engineer"
-        onChange={e => onChangeEducationHandler(e, "degree", component)}
+        placeholder={jobDegreeTitle}
+        onChange={e => onChangeWorkEducationHandler(e, "degree", component)}
       />
       <label htmlFor="start-date">Start Date</label>
       <Input
         type="date"
         id="start-date"
-        onChange={e => onChangeEducationHandler(e, "startDate", component)}
+        onChange={e => onChangeWorkEducationHandler(e, "startDate", component)}
       />
       <label htmlFor="end-date">End Date</label>
 
@@ -35,7 +43,9 @@ const Form = ({ notFinished, onChangeEducationHandler, component }) => {
           <Input
             type="date"
             id="end-date"
-            onChange={e => onChangeEducationHandler(e, "endDate", component)}
+            onChange={e =>
+              onChangeWorkEducationHandler(e, "endDate", component)
+            }
           />
         ) : null}
 
@@ -43,7 +53,7 @@ const Form = ({ notFinished, onChangeEducationHandler, component }) => {
         <Input
           type="checkbox"
           id="currentWorkplace"
-          onChange={e => onChangeEducationHandler(e, "finished", component)}
+          onChange={e => onChangeWorkEducationHandler(e, "finished", component)}
         />
       </div>
     </div>

@@ -5,7 +5,7 @@ import Card from "../../elements/card/Card";
 import "../education/education.css";
 import {
   disableButton,
-  onChangeEducationHandler,
+  onChangeWorkEducationHandler,
   onFormSubmission
 } from "../../../utils/stateUtils";
 
@@ -15,7 +15,7 @@ class Workexperience extends Component {
     this.state = {
       isDisabled: true,
 
-      education: {
+      work: {
         nameOfInstitution: "",
         degree: "",
         startDate: "",
@@ -23,19 +23,19 @@ class Workexperience extends Component {
         notFinished: false
       },
 
-      educationList: []
+      workList: []
     };
   }
 
   render() {
     return (
       <section className="section-heading">
-        <h3 className="section-heading__education">Education</h3>
+        <h3 className="section-heading__education">Work Experience</h3>
 
-        {this.state.educationList.map(education => {
-          const { nameOfInstitution, degree, startDate, endDate } = education;
+        {this.state.workList.map(work => {
+          const { nameOfInstitution, degree, startDate, endDate } = work;
           return (
-            <div key={education.degree}>
+            <div key={work.degree}>
               <Card
                 nameOfInstitution={nameOfInstitution}
                 degree={degree}
@@ -49,27 +49,27 @@ class Workexperience extends Component {
         {this.state.isDisabled && (
           <>
             <Form
-              nameOfInstitution={this.state.education.nameOfInstitution}
-              degree={this.state.education.degree}
-              startDate={this.state.education.startDate}
-              endDate={this.state.education.endDate}
-              notFinished={this.state.education.notFinished}
-              onChangeEducationHandler={onChangeEducationHandler}
+              notFinished={this.state.work.notFinished}
+              onChangeWorkEducationHandler={onChangeWorkEducationHandler}
               component={this}
+              placeOfWorkStudy="Company Name"
+              workEducationPlaceholder="Google"
+              jobDegreeTitle="Software Engineer"
+              titleOrDegree="Job Title"
             />
           </>
         )}
         <>
           <Button
             onClick={() => disableButton(this)}
-            text="Add new degree"
+            text="Add new job"
             isDisabled={this.state.isDisabled}
             className={this.state.isDisabled ? "disabled" : null}
           />
 
           <Button
             onClick={e => onFormSubmission(e, this)}
-            text="Finish current degree"
+            text="Finish current job"
             type="submit"
             isDisabled={!this.state.isDisabled}
             className={!this.state.isDisabled ? "disabled" : null}
