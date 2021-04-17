@@ -20,7 +20,8 @@ class Workexperience extends Component {
         degree: "",
         startDate: "",
         endDate: "",
-        notFinished: false
+        notFinished: false,
+        description: "Describe your responsibilities"
       },
 
       workList: []
@@ -33,7 +34,13 @@ class Workexperience extends Component {
         <h3 className="section-heading__education">Work Experience</h3>
 
         {this.state.workList.map(work => {
-          const { nameOfInstitution, degree, startDate, endDate } = work;
+          const {
+            nameOfInstitution,
+            degree,
+            startDate,
+            endDate,
+            description
+          } = work;
           return (
             <div key={work.degree}>
               <Card
@@ -41,6 +48,7 @@ class Workexperience extends Component {
                 degree={degree}
                 startDate={startDate}
                 endDate={endDate}
+                description={description}
               />
             </div>
           );
@@ -56,6 +64,7 @@ class Workexperience extends Component {
               workEducationPlaceholder="Google"
               jobDegreeTitle="Software Engineer"
               titleOrDegree="Job Title"
+              description={this.state.work.description}
             />
           </>
         )}

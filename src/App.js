@@ -15,7 +15,7 @@ function App() {
         <Sidebar />
         <MainContainer>
           <Education />
-          {/* <GeneralInfo /> */}
+
           <WorkExperience />
         </MainContainer>
       </WholePageContainer>

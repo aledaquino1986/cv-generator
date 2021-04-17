@@ -73,8 +73,11 @@ const onChangeWorkEducationHandler = (e, stateKey, component) => {
       degree,
       startDate,
       endDate,
-      notFinished
+      notFinished,
+      description
     } = component.state.work;
+
+    console.log(description);
 
     if (stateKey === "nameOfInstitution") {
       component.setState({
@@ -83,7 +86,8 @@ const onChangeWorkEducationHandler = (e, stateKey, component) => {
           degree,
           startDate,
           endDate,
-          notFinished
+          notFinished,
+          description
         }
       });
     } else if (stateKey === "degree") {
@@ -93,7 +97,8 @@ const onChangeWorkEducationHandler = (e, stateKey, component) => {
           degree: value,
           startDate,
           endDate,
-          notFinished
+          notFinished,
+          description
         }
       });
     } else if (stateKey === "startDate") {
@@ -103,7 +108,8 @@ const onChangeWorkEducationHandler = (e, stateKey, component) => {
           degree,
           startDate: value,
           endDate,
-          notFinished
+          notFinished,
+          description
         }
       });
     } else if (stateKey === "endDate") {
@@ -113,7 +119,8 @@ const onChangeWorkEducationHandler = (e, stateKey, component) => {
           degree,
           startDate,
           endDate: value,
-          notFinished
+          notFinished,
+          description
         }
       });
     } else if (stateKey === "finished") {
@@ -123,7 +130,18 @@ const onChangeWorkEducationHandler = (e, stateKey, component) => {
           degree,
           startDate,
           endDate: !component.state.work.notFinished ? "present" : "",
-          notFinished: !component.state.work.notFinished
+          notFinished: !component.state.work.notFinished,
+          description
+        }
+      });
+    } else if (stateKey === "description") {
+      component.setState({
+        work: {
+          nameOfInstitution,
+          degree,
+          startDate,
+          endDate,
+          description: value
         }
       });
     }
@@ -165,14 +183,21 @@ const onFormSubmission = (e, component) => {
       nameOfInstitution,
       degree,
       startDate,
-      endDate
+      endDate,
+      description
     } = component.state.work;
 
     const copyOfWorkList = [...component.state.workList];
 
     copyOfWorkList.push(component.state.work);
 
-    if (!nameOfInstitution || !degree || !startDate || !endDate) {
+    if (
+      !nameOfInstitution ||
+      !degree ||
+      !startDate ||
+      !endDate ||
+      !description
+    ) {
       return alert("Los campos estan vacios");
     }
     console.log("finished submitting");
@@ -183,7 +208,8 @@ const onFormSubmission = (e, component) => {
         nameOfInstitution: "",
         degree: "",
         startDate: "",
-        endDate: ""
+        endDate: "",
+        description: "Describe your current job"
       },
       workList: copyOfWorkList
     });

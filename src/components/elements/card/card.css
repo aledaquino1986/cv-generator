@@ -32,6 +32,16 @@
   font-style: italic;
 }
 
+.job-description {
+  width: 100%;
+  padding-right: 1.5rem;
+}
+
+.job-description p {
+  display: block;
+  overflow-wrap: break-word;
+}
+
 /* .card-heading p:not(:last-child) {
   flex-basis: 200px;
 } */

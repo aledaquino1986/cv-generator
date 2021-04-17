@@ -1,5 +1,6 @@
 import React from "react";
 import Input from "../../elements/input/Input";
+
 import "./form.css";
 import "../button/Button";
 
@@ -10,23 +11,24 @@ const Form = ({
   placeOfWorkStudy,
   workEducationPlaceholder,
   jobDegreeTitle,
-  titleOrDegree
+  titleOrDegree,
+  description = null
 }) => {
   return (
     <div className="form-container">
-      <label htmlFor="Institution">{placeOfWorkStudy}</label>
+      <label htmlFor={placeOfWorkStudy}>{placeOfWorkStudy}</label>
       <Input
         type="text"
-        id="Institution"
+        id={placeOfWorkStudy}
         placeholder={workEducationPlaceholder}
         onChange={e =>
           onChangeWorkEducationHandler(e, "nameOfInstitution", component)
         }
       />
-      <label htmlFor="degree">{titleOrDegree}</label>
+      <label htmlFor={titleOrDegree}>{titleOrDegree}</label>
       <Input
         type="text"
-        id="degree"
+        id={titleOrDegree}
         placeholder={jobDegreeTitle}
         onChange={e => onChangeWorkEducationHandler(e, "degree", component)}
       />
@@ -56,6 +58,19 @@ const Form = ({
           onChange={e => onChangeWorkEducationHandler(e, "finished", component)}
         />
       </div>
+
+      {!description ? null : (
+        <>
+          <label htmlFor="description">Description</label>
+          <Input
+            type="textarea"
+            id="description"
+            onChange={e =>
+              onChangeWorkEducationHandler(e, "description", component)
+            }
+          />
+        </>
+      )}
     </div>
   );
 };

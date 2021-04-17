@@ -2,7 +2,13 @@ import React from "react";
 import { formatFunction } from "../../../utils/utils";
 import "./card.css";
 
-const Card = ({ nameOfInstitution, degree, startDate, endDate }) => {
+const Card = ({
+  nameOfInstitution,
+  degree,
+  startDate,
+  endDate,
+  description = ""
+}) => {
   return (
     <div className="card-container">
       <div className="card-heading">
@@ -14,6 +20,11 @@ const Card = ({ nameOfInstitution, degree, startDate, endDate }) => {
             {formatFunction(startDate)} |{" "}
             {endDate === "present" ? "present" : formatFunction(endDate)}
           </p>
+          {!description ? null : (
+            <div className="job-description">
+              <p>{description}</p>
+            </div>
+          )}
         </>
       </div>
     </div>

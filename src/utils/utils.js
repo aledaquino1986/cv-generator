@@ -8,4 +8,12 @@ const formatFunction = date => {
   return `${formatter.format(month)}-${year}`;
 };
 
-export { formatFunction };
+const disablePlaceholder = e => {
+  e.target.placeholder = "";
+};
+
+const enablePlaceholder = (e, placeholderText) => {
+  e.target.placeholder = placeholderText;
+};
+
+export { formatFunction, disablePlaceholder, enablePlaceholder };
