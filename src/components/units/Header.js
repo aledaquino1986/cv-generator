@@ -42,25 +42,6 @@ class Header extends Component {
     }
   };
 
-  // onStateChangeHandler = (e, state) => {
-  //   const { value } = e.target;
-  //   if (state === this.state.title) {
-  //     this.setState({
-  //       title: {
-  //         jobTitle: value,
-  //         isJobTitleInput: true
-  //       }
-  //     });
-  //   } else if (state === this.state.name) {
-  //     this.setState({
-  //       name: {
-  //         username: e.target.value,
-  //         isTextInput: true
-  //       }
-  //     });
-  //   }
-  // };
-
   createNameAndJobTitle = (e, state) => {
     const { value } = e.target;
     if (state === this.state.title) {
