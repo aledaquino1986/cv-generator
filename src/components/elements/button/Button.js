@@ -1,4 +1,5 @@
 import React from "react";
+import { HideButtonContext } from "../../../context/HideButtonContext";
 import "./button.css";
 
 const Button = ({
@@ -9,14 +10,26 @@ const Button = ({
   isDisabled = false
 }) => {
   return (
-    <button
-      className={className}
-      onClick={onClick}
-      type="type"
-      disabled={isDisabled}
-    >
-      {text}
-    </button>
+    <HideButtonContext.Consumer>
+      {context => {
+        const { isHidden } = context;
+        return (
+          <button
+            className={
+              text === "Hide Buttons" ||
+              `${className} ${
+                isHidden ? "hidden unmountedStyle " : "mountedStyle"
+              }`
+            }
+            onClick={onClick}
+            type="type"
+            disabled={isDisabled}
+          >
+            {text}
+          </button>
+        );
+      }}
+    </HideButtonContext.Consumer>
   );
 };
 

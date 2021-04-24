@@ -77,8 +77,6 @@ const onChangeWorkEducationHandler = (e, stateKey, component) => {
       description
     } = component.state.work;
 
-    console.log(description);
-
     if (stateKey === "nameOfInstitution") {
       component.setState({
         work: {
@@ -141,6 +139,7 @@ const onChangeWorkEducationHandler = (e, stateKey, component) => {
           degree,
           startDate,
           endDate,
+          notFinished,
           description: value
         }
       });
@@ -164,9 +163,8 @@ const onFormSubmission = (e, component) => {
     copyOfEducationList.push(component.state.education);
 
     if (!nameOfInstitution || !degree || !startDate || !endDate) {
-      return alert("Los campos estan vacios");
+      return alert("Please fill out all the input fields");
     }
-    console.log("finished submitting");
 
     component.setState({
       isDisabled: !component.state.isDisabled,
@@ -196,11 +194,10 @@ const onFormSubmission = (e, component) => {
       !degree ||
       !startDate ||
       !endDate ||
-      !description
+      !description === "Describe your job post"
     ) {
-      return alert("Los campos estan vacios");
+      return alert("Please fill out all input fields");
     }
-    console.log("finished submitting");
 
     component.setState({
       isDisabled: !component.state.isDisabled,

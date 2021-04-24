@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Input from "../elements/input/Input";
 import Button from "../elements/button/Button";
 import "./header.css";
+import { HideButtonContext } from "../../context/HideButtonContext";
 
 class Header extends Component {
   constructor(props) {
@@ -63,106 +64,112 @@ class Header extends Component {
 
   render() {
     return (
-      <header>
-        <form action="">
-          <div className="container name-container">
-            {this.state.name.isTextInput ? (
-              <>
-                <Input
-                  type="text"
-                  placeholder="Add yourname"
-                  onChange={e => this.createNameAndJobTitle(e, this.state.name)}
-                  value={this.state.name.username}
-                  className="mountedStyle"
-                />
-                <Button
-                  className={
-                    this.state.isHidden
-                      ? "hidden unmountedStyle "
-                      : "mountedStyle"
-                  }
-                  onClick={e => this.changeTextToInput(e, this.state.name)}
-                  text="Confirm Your Name"
-                />
-              </>
-            ) : (
-              <>
-                <h1>
-                  {this.state.name.isTextInput === false &&
-                  !this.state.name.username
-                    ? this.state.heading
-                    : this.state.name.username}
-                </h1>
+      <HideButtonContext.Consumer>
+        {context => {
+          const { hideButtonHandler, isHidden } = context;
+          return (
+            <header>
+              <form action="">
+                <div className="container name-container">
+                  {this.state.name.isTextInput ? (
+                    <>
+                      <Input
+                        type="text"
+                        placeholder="Add yourname"
+                        onChange={e =>
+                          this.createNameAndJobTitle(e, this.state.name)
+                        }
+                        value={this.state.name.username}
+                        className="mountedStyle"
+                      />
+                      <Button
+                        className={
+                          isHidden ? "hidden unmountedStyle " : "mountedStyle"
+                        }
+                        onClick={e =>
+                          this.changeTextToInput(e, this.state.name)
+                        }
+                        text="Confirm Your Name"
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <h1>
+                        {this.state.name.isTextInput === false &&
+                        !this.state.name.username
+                          ? this.state.heading
+                          : this.state.name.username}
+                      </h1>
 
-                <Button
-                  className={
-                    this.state.isHidden
-                      ? "hidden unmountedStyle "
-                      : "mountedStyle"
-                  }
-                  onClick={e => this.changeTextToInput(e, this.state.name)}
-                  text="Add your name"
-                />
-              </>
-            )}
-          </div>
-        </form>
+                      <Button
+                        className={
+                          isHidden ? "hidden unmountedStyle " : "mountedStyle"
+                        }
+                        onClick={e =>
+                          this.changeTextToInput(e, this.state.name)
+                        }
+                        text="Add your name"
+                      />
+                    </>
+                  )}
+                </div>
+              </form>
 
-        <form action="">
-          <div className="container job-title-container">
-            {this.state.title.isJobTitleInput ? (
-              <>
-                <Input
-                  type="text"
-                  placeholder="Add your job title"
-                  onChange={e =>
-                    this.createNameAndJobTitle(e, this.state.title)
-                  }
-                  value={this.state.title.jobTitle}
-                  className="mountedStyle"
-                />
+              <form action="">
+                <div className="container job-title-container">
+                  {this.state.title.isJobTitleInput ? (
+                    <>
+                      <Input
+                        type="text"
+                        placeholder="Add your job title"
+                        onChange={e =>
+                          this.createNameAndJobTitle(e, this.state.title)
+                        }
+                        value={this.state.title.jobTitle}
+                        className="mountedStyle"
+                      />
 
-                <Button
-                  className={
-                    this.state.isHidden
-                      ? "hidden unmountedstyle"
-                      : "mountedStyle"
-                  }
-                  onClick={e => this.changeTextToInput(e, this.state.title)}
-                  text="Confirm your job title"
-                />
-              </>
-            ) : (
-              <>
-                <h4>
-                  {!this.state.title.jobTitle
-                    ? this.state.jobTitleHeading
-                    : this.state.title.jobTitle}
-                </h4>
+                      <Button
+                        className={
+                          isHidden ? "hidden unmountedstyle" : "mountedStyle"
+                        }
+                        onClick={e =>
+                          this.changeTextToInput(e, this.state.title)
+                        }
+                        text="Confirm your job title"
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <h4>
+                        {!this.state.title.jobTitle
+                          ? this.state.jobTitleHeading
+                          : this.state.title.jobTitle}
+                      </h4>
 
-                <Button
-                  className={
-                    this.state.isHidden
-                      ? "hidden unmountedstyle"
-                      : "mountedStyle"
-                  }
-                  onClick={e => this.changeTextToInput(e, this.state.title)}
-                  text="Add your job title"
-                />
-              </>
-            )}
-          </div>
-        </form>
+                      <Button
+                        className={
+                          isHidden ? "hidden unmountedstyle" : "mountedStyle"
+                        }
+                        onClick={e =>
+                          this.changeTextToInput(e, this.state.title)
+                        }
+                        text="Add your job title"
+                      />
+                    </>
+                  )}
+                </div>
+              </form>
 
-        <Button
-          onClick={() =>
-            this.setState({
-              isHidden: !this.state.isHidden
-            })
-          }
-          text=" Hide Buttons"
-        />
-      </header>
+              <Button
+                onClick={hideButtonHandler}
+                text="Hide Buttons"
+                className={"mountedStyle"}
+              />
+            </header>
+          );
+        }}
+      </HideButtonContext.Consumer>
     );
   }
 }

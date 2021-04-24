@@ -19,7 +19,7 @@ const Card = ({
           <p className="date">
             {formatFunction(startDate)} |{" "}
             {endDate === "present" ? "present" : formatFunction(endDate)}
-          </p>
+          </p>{" "}
           {!description ? null : (
             <div className="job-description">
               <p>{description}</p>
